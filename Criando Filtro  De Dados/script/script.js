@@ -86,11 +86,7 @@ const data = [
 
 //1) Crie uma função para filtrar os hotéis que estão localizados no Brasil
 function filterCountry(array) {
-  const hotelsInBrazil = array.filter((obj) => {
-    if (obj.country === 'Brasil') {
-      return obj
-    }
-  })
+  const hotelsInBrazil = array.filter((obj) => obj.country === 'Brasil')
   return hotelsInBrazil;
 }
 console.log('Filtrando Hoteis no Brasil')
@@ -98,11 +94,7 @@ console.log(filterCountry(data));
 
 // 2) Crie uma função para filtrar os hotéis que possuem o preço igual ou maior que R$200,00.
 function filterPrice(array) {
-  const filterHotelByPrice = array.filter((obj) => {
-    if (obj.price >= 200) {
-      return obj
-    }
-  })
+  const filterHotelByPrice = array.filter((obj) => obj.price >= 200)
   return filterHotelByPrice;
 }
 console.log('Filtrando Hoteis por Preço')
@@ -110,11 +102,7 @@ console.log(filterPrice(data));
 
 //3) Crie uma função para filtrar os hotéis que estão abertos nesse momento (isOpen)
 function filterIsOpen(array) {
-  const filterOpenHotels = array.filter((obj) => {
-    if (obj.isOpen) {
-      return obj
-    }
-  })
+  const filterOpenHotels = array.filter((obj) => obj.isOpen)
   return filterOpenHotels;
 }
 console.log('Filtrando Hoteis Abertos')
@@ -123,22 +111,14 @@ console.log(filterIsOpen(data));
 //DESAFIO
 //4) Crie uma função que filtre apenas o hotel com o nome “Copacabana Palace”. Após isso, crie outra função para verificar as datas disponíveis para agendamento nesse hotel (isAvaliable).
 function filterHotelName(array) {
-  const filterHotelByName = array.filter((obj) => {
-    if (obj.name === 'Hotel Cancun') {
-      return obj
-    }
-  })
+  const filterHotelByName = array.filter((obj) => obj.name === 'Hotel Cancun')
   return filterHotelByName;
 }
 
 function filterToBook() {
   const hotel = filterHotelName(data);
   const hotelToBook = hotel[0].toBook
-  const dates = hotelToBook.filter((obj) => {
-    if (obj.isAvaliable) {
-      return obj
-    }
-  })
+  const dates = hotelToBook.filter((obj) => obj.isAvaliable)
   return dates;
 }
 console.log('Retornando Datas do Hotel Cancun')
