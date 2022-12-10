@@ -86,8 +86,8 @@ const data = [
 
 //1) Crie uma função para filtrar os hotéis que estão localizados no Brasil
 function filterCountry(array) {
-  const hotelsInBrazil = [...array.filter((obj) => obj.country === 'Brasil')].map(element => element.name)
-  return hotelsInBrazil; 
+  const hotelsInBrazil = array.filter((obj) => obj.country === 'Brasil')
+  return newArray; 
 }
 console.log('Filtrando Hoteis no Brasil')
 console.log(filterCountry(data));
