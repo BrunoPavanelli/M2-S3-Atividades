@@ -94,7 +94,7 @@ const usuarios = Object.freeze([
   
   function addAddresToUser() {
 
-    let onlyAddress = usuarios.map(userData => enderecos.find(userAddress => userData.id === userAddress.userId
+    const onlyAddress = usuarios.map(userData => enderecos.find(userAddress => userData.id === userAddress.userId
     )).map(address => address.endereco)
 
     const userWithAddress = [...usuarios]
