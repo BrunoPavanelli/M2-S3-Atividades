@@ -17,11 +17,28 @@ const students = [
   },
 ];
 
-const addNewStudentInDOM = () => {
-
+const addNewStudentInDOM = (data) => {
+  data.forEach((element) => { 
+    document.body.insertAdjacentHTML("beforeend", `
+    <div>
+      <h3>${element.name}</h3>
+      <small>${element.age}</small>
+    </div>
+    `)
+  })
 }
 
-const newStudent = () =>{
+addNewStudentInDOM(students)
 
+const newStudent = (newData, data) => {
+  data.push(newData)
+  addNewStudentInDOM([newData])
 }
+
+const samuel = {
+  name: 'Samuel',
+  age: 23
+}
+
+newStudent(samuel, students)
 
