@@ -92,37 +92,67 @@ const usuarios = Object.freeze([
   
   //Adicionar endereços aos usuarios pelo id
   
-  function addAddresToUser() {
+  function addAddresToUser(array1, array2) {
 
-    const onlyAddress = usuarios.map(userData => enderecos.find(userAddress => userData.id === userAddress.userId
+    const onlyAddress = array1.map(usersData => array2.find(userAddress => usersData.id === userAddress.userId
     )).map(address => address.endereco)
 
-    const userWithAddress = [...usuarios]
-    userWithAddress.map((userData, index) => userData.endereco = onlyAddress[index])
+    const userWithAddress = [...array1]
+    userWithAddress.map((usersData, index) => usersData.endereco = onlyAddress[index])
     
     return userWithAddress
   }
-  console.log(addAddresToUser())
+  console.log('Users Complete Datas:')
+  const usersData = addAddresToUser(usuarios, enderecos)
+  console.log(usersData)
   
   //funcao para deletar o password
   
-  function deletePassword() {
-    // Sua lógica
+  function deletePassword(object) {
+    // const onlyPasswords = array.map(usersData => {
+    //   const { password, ...rest } = usersData
+    //   return rest
+    // })
+    // const { password } = array
+    delete object.password
+    return object
+  }
+ 
+  function listUsers(array) {
+    const userPublicData = array.map(usersData => deletePassword(usersData))
+
+    return userPublicData
   }
   
-  //listar os usuarios sem a senha
-  
-  function listUsers() {
-    // Sua lógica
-  }
-  
+  const usersPublicData = listUsers(usersData)
+  console.log('Users Public Data')
+  console.log(usersPublicData)
+
   //listar somente nome, email e stack
-  function listUserStacks() {
-    // Sua lógica
+  function listUserStacks(array) {
+    const usersNecessaryData = array.map(usersData => {
+      let {email, nome, stacks} = usersData
+      return {email, nome, stacks}
+    })
+
+    return usersNecessaryData
   }
+
+  console.log('Users Necessary Data')
+  console.log(listUserStacks(usersData))
   
   //deletar um usuário que tenha python na stack
   
-  function deleteUser() {
-    // Sua lógica
+  function deleteUser(array) {
+    const nullishingUserWithPythonStack = array.map(usersData => {
+      if (usersData.stacks.includes('Python')) {
+        return null
+      }
+      return usersData
+    })
+    const usersStacksWithOutPython = nullishingUserWithPythonStack.filter(usersData => usersData !== null)
+    return usersStacksWithOutPython
   }
+
+  console.log('Users that not use Python')
+  console.log(deleteUser(usersData))
